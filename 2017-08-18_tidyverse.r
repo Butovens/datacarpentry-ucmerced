@@ -96,7 +96,34 @@ surveys_hindfoot <- surveys %>%
    surveys %>%
    group_by(sex)%>%
    summarise(n())
- 
+   
+   
+## EXPORT DATA ----
+   surveys_complete <- surveys %>%
+     filter(species_id !="")%>% #remove species_id
+     filter(!is.na(weight))%>%
+     filter(!is.na(hindfoot_length))%>%
+     filter(sex !="")
+   
+   surveys_complete <- surveys %>%
+     filter(species_id !="",
+            !is.na(weight),
+            !is.na(hindfoot_length),
+            sex !="")
+   
+   ## Extract the most common species_id
+   species_counts <- surveys_complete %>%
+     group_by(species_id)%>%
+     tally %>%
+     filter(n >= 50)
+   
+   ## Only keep the most common species
+   surveys_comm_spp <- surveys_complete %>%
+     filter(species_id %in% species_counts$species_id)
+   
+
+## to save the output of the data   
+write.csv(surveys_comm_spp, file = "data_output/surveys_complete.csv")
 
  
 
