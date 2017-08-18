@@ -1,5 +1,6 @@
 ## My script from data carpentry UC Merced
 ## Butovens Médé bmede@ucmerced.edu
+## Aug 17-18, 2017...
 
 ## Download data into my R project  ----
 download.file("https://ndownloader.figshare.com/files/2292169",
