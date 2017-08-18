@@ -38,7 +38,6 @@ summary(surveys$month)
 hist(surveys$month,col='grey', breaks=12)
 
 ## explore factor variable
-
 summary(surveys$taxa)
 levels(surveys$taxa)
 nlevels(surveys$taxa)
